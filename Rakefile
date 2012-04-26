@@ -17,9 +17,9 @@ Jeweler::Tasks.new do |gem|
   gem.name = "custom-template"
   gem.homepage = "http://github.com/shu0115/custom-template"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "shun.matsumoto@pixta.co.jp"
+  gem.summary = "Custom Scaffold Template"
+  gem.description = "Custom Template for Scaffold."
+  gem.email = "s.matsumoto0115@gmail.com"
   gem.authors = ["Shun Matsumoto"]
   # dependencies defined in Gemfile
 end
