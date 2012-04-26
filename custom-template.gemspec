@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "custom-template"
-  s.version = "0.1.1"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Shun Matsumoto"]
@@ -25,6 +25,18 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "custom-template.gemspec",
+    "lib/generators/custom/template/template_generator.rb",
+    "lib/generators/custom/template/templates/erb/controller/view.html.erb",
+    "lib/generators/custom/template/templates/erb/mailer/view.text.erb",
+    "lib/generators/custom/template/templates/erb/scaffold/_form.html.erb",
+    "lib/generators/custom/template/templates/erb/scaffold/edit.html.erb",
+    "lib/generators/custom/template/templates/erb/scaffold/index.html.erb",
+    "lib/generators/custom/template/templates/erb/scaffold/new.html.erb",
+    "lib/generators/custom/template/templates/erb/scaffold/show.html.erb",
+    "lib/generators/custom/template/templates/rails/controller/controller.rb",
+    "lib/generators/custom/template/templates/rails/helper/helper.rb",
+    "lib/generators/custom/template/templates/rails/scaffold_controller/controller.rb",
+    "lib/generators/custom/template/templates/rails/stylesheets/scaffold.css",
     "spec/custom-template_spec.rb",
     "spec/spec_helper.rb"
   ]
