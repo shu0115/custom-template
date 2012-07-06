@@ -1,0 +1,23 @@
+%h1 Listing <%= plural_table_name %>
+
+%table
+  %tr
+<% attributes.each do |attribute| -%>
+    %th <%= attribute.human_name %>
+<% end -%>
+    %th
+    %th
+    %th
+
+  - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+    %tr
+<% attributes.each do |attribute| -%>
+      %td= <%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
+      %td= link_to t( "menu.show" ), action: "show", id: <%= singular_table_name %>.id
+      %td= link_to t( "menu.edit" ), action: "edit", id: <%= singular_table_name %>.id
+      %td= link_to t( "menu.destroy" ), { action: "destroy", id: <%= singular_table_name %>.id }, data: { confirm: "本当に削除してよろしいですか？" }
+
+%br
+
+= link_to t( "menu.new" ), action: "new"

@@ -1,0 +1,14 @@
+%h1 New <%= singular_table_name %>
+
+= form_for :<%= singular_table_name %>, url: { action: "create", id: @<%= singular_table_name %>.try(:id) } do |f|
+
+<% attributes.each{ |attribute| -%>
+  .field
+    = f.label :<%= attribute.name %>
+    = f.<%= attribute.field_type %> :<%= attribute.name %>
+
+<% } -%>
+  .actions
+    = f.submit t( "menu.create" ), 'data-disable-with' => t( "menu.create" )
+
+= link_to t( "menu.list" ), action: "index"

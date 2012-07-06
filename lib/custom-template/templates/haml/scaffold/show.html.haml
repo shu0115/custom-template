@@ -1,0 +1,10 @@
+
+<% attributes.each{ |attribute| -%>
+  %p
+    %b <%= attribute.human_name %>:
+    = @<%= singular_table_name %>.<%= attribute.name %>
+
+<% } -%>
+= link_to t( "menu.edit" ), action: "edit", id: @<%= singular_table_name %>.id
+|
+= link_to t( "menu.list" ), action: "index"
