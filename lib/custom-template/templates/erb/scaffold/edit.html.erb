@@ -1,7 +1,7 @@
 
 <h1>Editing <%= singular_table_name %></h1>
 
-<%%= form_for( :<%= singular_table_name %>, <%= singular_table_name %>_path( @<%= singular_table_name %> ), method: :put ) do |f| %>
+<%%= form_for( :<%= singular_table_name %>, url: <%= singular_table_name %>_path( @<%= singular_table_name %> ), method: :put ) do |f| %>
   <%% if @<%= singular_table_name %>.errors.any? %>
     <div id="error_explanation">
       <h2><%%= pluralize(@<%= singular_table_name %>.errors.count, "error") %> prohibited this <%= singular_table_name %> from being saved:</h2>
