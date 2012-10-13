@@ -37,7 +37,7 @@ class <%= controller_class_name %>Controller < ApplicationController
     @<%= "#{singular_table_name}.user_id" %> = <%= "session[:user_id]" %>
 
     if @<%= orm_instance.save %>
-      redirect_to( { action: "index" }, notice: <%= "\"#{human_name} was successfully created.\"" %> )
+      redirect_to( <%= plural_table_name %>_path, notice: <%= "\"#{human_name} was successfully created.\"" %> )
     else
       render action: "new"
     end
