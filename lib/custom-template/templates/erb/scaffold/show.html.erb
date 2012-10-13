@@ -5,5 +5,5 @@
 </p>
 
 <% } -%>
-<%%= link_to t( "menu.edit" ), action: "edit", id: @<%= singular_table_name %>.id %>
- | <%%= link_to t( "menu.list" ), action: "index" %>
+<%%= link_to t( "menu.edit" ), edit_<%= singular_table_name %>_path( @<%= singular_table_name %> ) %>
+ | <%%= link_to t( "menu.list" ), <%= plural_table_name %>_path %>

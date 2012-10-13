@@ -13,10 +13,9 @@ module Custom
       #-------------------#
       def generate_template
         directory "templates/erb", "lib/templates/erb", recursive: true
-        directory "templates/haml", "lib/templates/haml", recursive: true
+#        directory "templates/haml", "lib/templates/haml", recursive: true
         directory "templates/rails", "lib/templates/rails", recursive: true
       end
-
     end
   end
 end

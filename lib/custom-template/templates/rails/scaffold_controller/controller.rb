@@ -50,7 +50,7 @@ class <%= controller_class_name %>Controller < ApplicationController
     @<%= singular_table_name %> = <%= "#{class_name}.where( id: params[:id], user_id: session[:user_id] ).first" %>
 
     if @<%= orm_instance.update_attributes(" params[:#{singular_table_name}] ") %>
-      redirect_to( { action: "show", id: <%= "params[:id]" %> }, notice: <%= "\"#{human_name} was successfully updated.\"" %> )
+      redirect_to( <%= singular_table_name %>_path( @<%= singular_table_name %> ), notice: <%= "\"#{human_name} was successfully updated.\"" %> )
     else
       render action: "edit", id: <%= "params[:id]" %>
     end
@@ -63,7 +63,7 @@ class <%= controller_class_name %>Controller < ApplicationController
     @<%= singular_table_name %> = <%= "#{class_name}.where( id: params[:id], user_id: session[:user_id] ).first" %>
     @<%= orm_instance.destroy %>
 
-    redirect_to action: "index"
+    redirect_to <%= plural_table_name %>_path
   end
 
 end
