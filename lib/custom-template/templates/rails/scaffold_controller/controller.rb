@@ -48,10 +48,10 @@ class <%= controller_class_name %>Controller < ApplicationController
   def update( id, <%= singular_table_name %> )
     @<%= singular_table_name %> = <%= "#{class_name}.where( id: id, user_id: session[:user_id] ).first" %>
 
-    if @<%= orm_instance.update_attributes(" params[:#{singular_table_name}] ") %>
+    if @<%= orm_instance.update_attributes(" #{singular_table_name} ") %>
       redirect_to( <%= singular_table_name %>_path( @<%= singular_table_name %> ), notice: <%= "\"#{human_name} was successfully updated.\"" %> )
     else
-      render action: "edit", id: <%= "params[:id]" %>
+      render action: "edit", id: <%= "id" %>
     end
   end
 
@@ -59,7 +59,7 @@ class <%= controller_class_name %>Controller < ApplicationController
   # destroy #
   #---------#
   def destroy( id )
-    @<%= singular_table_name %> = <%= "#{class_name}.where( id: params[:id], user_id: session[:user_id] ).first" %>
+    @<%= singular_table_name %> = <%= "#{class_name}.where( id: id, user_id: session[:user_id] ).first" %>
     @<%= orm_instance.destroy %>
 
     redirect_to <%= plural_table_name %>_path
