@@ -15,5 +15,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Custom::Template::VERSION
 
-  gem.add_dependency 'action_args'
+#  gem.add_dependency 'action_args'
 end
