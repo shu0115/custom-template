@@ -1,6 +1,5 @@
 # coding: utf-8
 class <%= controller_class_name %>Controller < ApplicationController
-
   #-------#
   # index #
   #-------#
@@ -11,8 +10,8 @@ class <%= controller_class_name %>Controller < ApplicationController
   #------#
   # show #
   #------#
-  def show
-    @<%= singular_table_name %> = <%= "#{class_name}.where( id: params[:id], user_id: session[:user_id] ).first" %>
+  def show( id )
+    @<%= singular_table_name %> = <%= "#{class_name}.where( id: id, user_id: session[:user_id] ).first" %>
   end
 
   #-----#
@@ -25,15 +24,15 @@ class <%= controller_class_name %>Controller < ApplicationController
   #------#
   # edit #
   #------#
-  def edit
-    @<%= singular_table_name %> = <%= "#{class_name}.where( id: params[:id], user_id: session[:user_id] ).first" %>
+  def edit( id )
+    @<%= singular_table_name %> = <%= "#{class_name}.where( id: id, user_id: session[:user_id] ).first" %>
   end
 
   #--------#
   # create #
   #--------#
-  def create
-    @<%= singular_table_name %> = <%= orm_class.build( class_name, " params[:#{singular_table_name}] " ) %>
+  def create( <%= singular_table_name %> )
+    @<%= singular_table_name %> = <%= orm_class.build( class_name, " #{singular_table_name} " ) %>
     @<%= "#{singular_table_name}.user_id" %> = <%= "session[:user_id]" %>
 
     if @<%= orm_instance.save %>
@@ -46,8 +45,8 @@ class <%= controller_class_name %>Controller < ApplicationController
   #--------#
   # update #
   #--------#
-  def update
-    @<%= singular_table_name %> = <%= "#{class_name}.where( id: params[:id], user_id: session[:user_id] ).first" %>
+  def update( id, <%= singular_table_name %> )
+    @<%= singular_table_name %> = <%= "#{class_name}.where( id: id, user_id: session[:user_id] ).first" %>
 
     if @<%= orm_instance.update_attributes(" params[:#{singular_table_name}] ") %>
       redirect_to( <%= singular_table_name %>_path( @<%= singular_table_name %> ), notice: <%= "\"#{human_name} was successfully updated.\"" %> )
@@ -59,11 +58,10 @@ class <%= controller_class_name %>Controller < ApplicationController
   #---------#
   # destroy #
   #---------#
-  def destroy
+  def destroy( id )
     @<%= singular_table_name %> = <%= "#{class_name}.where( id: params[:id], user_id: session[:user_id] ).first" %>
     @<%= orm_instance.destroy %>
 
     redirect_to <%= plural_table_name %>_path
   end
-
 end

@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "custom-template"
   gem.require_paths = ["lib"]
   gem.version       = Custom::Template::VERSION
+
+  gem.add_dependency 'rails_config'
 end

@@ -2,6 +2,8 @@
 require "custom-template/version"
 require 'rails/generators'
 
+require 'action_args'
+
 module Custom
   module Generators
     class TemplateGenerator < ::Rails::Generators::Base
