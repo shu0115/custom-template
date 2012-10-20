@@ -51,7 +51,7 @@ class <%= controller_class_name %>Controller < ApplicationController
     if @<%= orm_instance.update_attributes(" #{singular_table_name} ") %>
       redirect_to( <%= singular_table_name %>_path( @<%= singular_table_name %> ), notice: <%= "\"#{human_name} was successfully updated.\"" %> )
     else
-      render action: "edit", id: <%= "id" %>
+      render action: "edit"
     end
   end
 
@@ -59,8 +59,8 @@ class <%= controller_class_name %>Controller < ApplicationController
   # destroy #
   #---------#
   def destroy( id )
-    @<%= singular_table_name %> = <%= "#{class_name}.where( id: id, user_id: session[:user_id] ).first" %>
-    @<%= orm_instance.destroy %>
+    <%= singular_table_name %> = <%= "#{class_name}.where( id: id, user_id: session[:user_id] ).first" %>
+    <%= orm_instance.present? %> ? <%= orm_instance.destroy %> : <%= flash[:alert] %> = <%= "\"#{human_name} was successfully deleted.\"" %>
 
     redirect_to <%= plural_table_name %>_path
   end
