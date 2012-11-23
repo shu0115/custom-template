@@ -60,7 +60,7 @@ class <%= controller_class_name %>Controller < ApplicationController
   #---------#
   def destroy( id )
     <%= singular_table_name %> = <%= "#{class_name}.where( id: id, user_id: session[:user_id] ).first" %>
-    <%= orm_instance.present? %> ? <%= orm_instance.destroy %> : <%= flash[:alert] %> = <%= "\"#{human_name} was successfully deleted.\"" %>
+    <%= orm_instance.destroy %> ? flash[:notice] = <%= "\"#{human_name} was successfully deleted.\"" %> : flash[:alert] = <%= "\"#{human_name} was failed deleted.\"" %>
 
     redirect_to <%= plural_table_name %>_path
   end
